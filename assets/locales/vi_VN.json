@@ -1,0 +1,14 @@
+{
+    "language": "English",
+    "login": "Login",
+    "phone_number": "Phone number",
+    "pass_word": "Pass word",
+    "forgot_pass_word": "Forgot pass word?",
+    "do_not_have_account":"Do not have an account?",
+    "sign_up":"Sign up right here",
+    "check_login_ifo":"Please check your login information",
+    "top_high_light_hotel": "Top 5  khách sạn nổi bật",
+    "recommend_hotel": "Khách sạn được đề xuất",
+    "view_room" : "Xem phòng",
+    "show_more": "Xem thêm"
+}
