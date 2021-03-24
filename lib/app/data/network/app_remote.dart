@@ -19,7 +19,7 @@ class AppRemote {
 
   static const String hotelHighLight = "/list-top-hotels/v2";
 
-  static const String listHomeHotel = "/list-home-hotels/v3";
+  static const String listHomeHotel = "/search/hotels/v5";
 
   static AppRemoteParams params = new AppRemoteParams();
 }
@@ -32,4 +32,6 @@ class AppRemoteParams {
   String paramDeviceType = 'device_type';
   String paramLat = 'lat';
   String paramLng = 'lng';
+  String paramIsMap = 'is_map';
+  String paramPage = 'page';
 }

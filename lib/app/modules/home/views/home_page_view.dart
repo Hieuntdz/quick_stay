@@ -30,38 +30,39 @@ class HomePageView extends GetView<HomeController> {
     return Container(
       color: Colors.white,
       padding: EdgeInsets.all(16),
-      child: CustomScrollView(
-        slivers: [
-          SliverList(
-            delegate: SliverChildListDelegate(
-              [
-                _searchView(),
-                SizedBox(
-                  height: 24,
+      child: Column(
+        children: [
+          _searchView(),
+          SizedBox(height: 24,),
+          Expanded(
+            child: CustomScrollView(
+              slivers: [
+                SliverList(
+                  delegate: SliverChildListDelegate(
+                    [
+                      _banner(),
+                      SizedBox(
+                        height: 24,
+                      ),
+                      _category(),
+                    ],
+                  ),
                 ),
-                _banner(),
-                SizedBox(
-                  height: 24,
+                SliverPersistentHeader(
+                  pinned: true,
+                  delegate: VoucherScrollDelegate(),
                 ),
-                _category(),
+                SliverList(
+                  delegate: SliverChildListDelegate([
+                    TopHighLightHotel(),
+                    SizedBox(
+                      height: 24,
+                    ),
+                    RecommendHotel(),
+                  ]),
+                ),
               ],
             ),
-          ),
-          SliverPersistentHeader(
-            pinned: true,
-            delegate: VoucherScrollDelegate(),
-          ),
-          SliverList(
-            delegate: SliverChildListDelegate([
-              SizedBox(
-                height: 24,
-              ),
-              TopHighLightHotel(),
-              SizedBox(
-                height: 24,
-              ),
-              RecommendHotel(),
-            ]),
           ),
         ],
       ),

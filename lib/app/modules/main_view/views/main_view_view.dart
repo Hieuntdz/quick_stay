@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:quick_stay_flutter/app/modules/home/controllers/home_controller.dart';
 
 import '../controllers/main_view_controller.dart';
 import 'fab_bottom_bar.dart';
@@ -52,7 +53,8 @@ class MainViewView extends GetView<MainViewController> {
             backgroundColor: Colors.transparent,
             elevation: 0,
             onPressed: () {
-              controller.showMapPage();
+              HomeController homeController = Get.find();
+              controller.showMapPage(homeController.position);
             },
             child: Container(
               height: 64,

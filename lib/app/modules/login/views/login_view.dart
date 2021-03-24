@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:get_cli/core/locales.g.dart';
 import 'package:quick_stay_flutter/app/utils/const.dart';
 import 'package:quick_stay_flutter/app/utils/hex_color.dart';
 import 'package:quick_stay_flutter/app/utils/scroll_column_expandable.dart';
-
+import 'package:quick_stay_flutter/generated/locales.g.dart';
 import '../controllers/login_controller.dart';
 import 'login_textfield_form.dart';
 
@@ -47,10 +46,10 @@ class LoginView extends GetView<LoginController> {
                   height: 21,
                 ),
                 Text(
-                 "dgfdgdfgdg",
+                  LocaleKeys.login.tr,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: AppDimen.defaultTextBigSize,
+                      fontSize:30,
                       fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
@@ -72,12 +71,12 @@ class LoginView extends GetView<LoginController> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        LoginTextFiledForm('language.lang.getPhoneNumberText',
+        LoginTextFiledForm(LocaleKeys.phone_number.tr,
             controller.editingPhoneNumberController),
         SizedBox(
           height: 16,
         ),
-        LoginTextFiledForm(LocaleKeys.ask_company_domain,
+        LoginTextFiledForm(LocaleKeys.pass_word.tr,
             controller.editingPassWordController),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -96,7 +95,7 @@ class LoginView extends GetView<LoginController> {
                 ),
                 padding: EdgeInsets.all(12.0),
                 child: Text(
-                  "Login",
+                  LocaleKeys.login,
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: AppDimen.defaultTextNormalSize,
@@ -105,8 +104,9 @@ class LoginView extends GetView<LoginController> {
               ),
             ),
             Text(
-              "Password",
-              style: TextStyle(color: Colors.white,
+              LocaleKeys.forgot_pass_word.tr,
+              style: TextStyle(
+                  color: Colors.white,
                   fontSize: AppDimen.defaultTextNormalSize),
             ),
           ],
@@ -124,7 +124,7 @@ class LoginView extends GetView<LoginController> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "ko co tk",
+            LocaleKeys.do_not_have_account.tr,
             style: TextStyle(
                 color: Colors.black, fontSize: AppDimen.defaultTextNormalSize),
           ),
@@ -132,7 +132,7 @@ class LoginView extends GetView<LoginController> {
             width: 2,
           ),
           Text(
-            "Sign up",
+            LocaleKeys.sign_up.tr,
             style: TextStyle(
                 color: Colors.white, fontSize: AppDimen.defaultTextNormalSize),
           ),

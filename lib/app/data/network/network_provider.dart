@@ -122,4 +122,26 @@ class NetWorkProvider {
     }
     return listHotel;
   }
+
+  Future<List<HotelData>> getListMapHotel(Position position) async {
+    Map<String, dynamic> params = HashMap();
+    params[AppRemote.params.paramLat] = position.latitude;
+    params[AppRemote.params.paramLng] = position.longitude;
+    params[AppRemote.params.paramIsMap] = 1;
+    params[AppRemote.params.paramPage] = 1;
+    Response response =
+        await _dio.get(AppRemote.listHomeHotel, queryParameters: params);
+
+    if (response == null) return null;
+    Logger.debug("getListMapHotel ${response.data}");
+
+    List<HotelData> listHotel = [];
+
+    if (response.data['success'] == 1 && response.data['data'] != null) {
+      response.data['data'].forEach((v) {
+        listHotel.add(new HotelData.fromJson(v));
+      });
+    }
+    return listHotel;
+  }
 }

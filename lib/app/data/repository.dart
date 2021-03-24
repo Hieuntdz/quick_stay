@@ -49,4 +49,8 @@ class Repository {
   Future<List<HotelData>> getListRecommendHotel(Position position) {
     return _netWorkProvider.getListRecommendHotel(position);
   }
+
+  Future<List<HotelData>> getListMapHotel(Position position) {
+    return _netWorkProvider.getListMapHotel(position);
+  }
 }

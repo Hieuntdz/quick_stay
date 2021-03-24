@@ -23,3 +23,8 @@ class AppPresKey {
 class AppColors {
   static const Color primaryColor = Color(0xE56024);
 }
+
+class AppBundleKey{
+  static const String keyLat = "lat";
+  static const String keyLng = "lng";
+}

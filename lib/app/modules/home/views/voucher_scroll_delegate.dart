@@ -11,7 +11,8 @@ class VoucherScrollDelegate extends SliverPersistentHeaderDelegate {
 
     return Container(
       width: double.infinity,
-      height: 56,
+      height: 80,
+        margin: EdgeInsets.only(bottom: 24),
       color: Colors.white,
       child: Container(
         width: double.infinity,
@@ -88,10 +89,10 @@ class VoucherScrollDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => 50;
+  double get maxExtent => 80;
 
   @override
-  double get minExtent => 50;
+  double get minExtent => 80;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {

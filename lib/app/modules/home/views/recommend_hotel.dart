@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:quick_stay_flutter/app/data/model/response/hotel_data.dart';
@@ -74,6 +73,7 @@ Widget _showMore() {
   return Align(
     alignment: Alignment.center,
     child: Container(
+      alignment: Alignment.center,
       width: 120,
       margin: EdgeInsets.only(bottom: 100),
       decoration: BoxDecoration(
@@ -92,68 +92,139 @@ Widget _showMore() {
 
 Widget _itemHotelRecommend(HotelData data) {
   return Container(
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Column(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  width: 128,
-                  height: 174,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(4.0),
-                    child: Helper.loadImage(data.thumbnail, fit: BoxFit.fill),
+    child: IntrinsicHeight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Column(
+            children: [
+              Stack(
+                children: [
+                  Container(
+                    width: 128,
+                    height: 174,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(4.0),
+                      child: Helper.loadImage(data.thumbnail, fit: BoxFit.fill),
+                    ),
                   ),
-                ),
-                Visibility(
-                  visible: data.isFlashSale,
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                      width: 32,
-                      height: 32,
-                      color: Color(0xffFAB516),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(4.0),
-                        child: SvgPicture.asset("assets/images/ic_flash.svg"),
+                  Visibility(
+                    visible: data.isFlashSale,
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        width: 32,
+                        height: 32,
+                        color: Color(0xffFAB516),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(4.0),
+                          child: SvgPicture.asset("assets/images/ic_flash.svg"),
+                        ),
                       ),
                     ),
                   ),
+                ],
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              _buttonViewRoom()
+            ],
+          ),
+          SizedBox(
+            width: 24,
+          ),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  data.name,
+                  style: TextStyle(
+                      color: Color(0xff2E3A59),
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600),
                 ),
+                rattingView(data),
+                textWithLeftIcon(
+                    "assets/images/ic_loaction_grey.svg", data.address),
+                SizedBox(
+                  height: 8,
+                ),
+                textWithLeftIcon("assets/images/ic_near_me.svg",
+                    "Cách tôi ${data.distance} km"),
+                Expanded(
+                  child: Container(),
+                  flex: 1,
+                ),
+                priceWidget(data),
               ],
             ),
-            SizedBox(
-              height: 16,
-            ),
-            _buttonViewRoom()
-          ],
-        ),
-        SizedBox(
-          width: 24,
-        ),
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+final Shader linearGradient = LinearGradient(
+  colors: <Color>[Color(0xfff79043), Color(0xfff5784d), Color(0xfff36456)],
+).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
+
+Widget priceWidget(HotelData hotelData) {
+
+  var price = int.parse(hotelData.price);
+  var priceOn = int.parse(hotelData.priceOn);
+
+  var discountPrice = double.parse(hotelData.discountPrice);
+  var discountPriceOn = double.parse(hotelData.discountPriceOn);
+
+  return Container(
+    alignment: Alignment.bottomRight,
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        RichText(
+          text: TextSpan(
             children: [
-              Text(
-                data.name,
+              TextSpan(
+                text: "2h đầu: ",
                 style: TextStyle(
-                    color: Color(0xff2E3A59),
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600),
+                    color: Color(0xff8F9BB3),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18),
               ),
-              rattingView(data),
-              textWithLeftIcon(
-                  "assets/images/ic_loaction_grey.svg", data.address),
-              SizedBox(
-                height: 8,
+              TextSpan(
+                text: "${hotelData.price} đ",
+                style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                    foreground: Paint()..shader = linearGradient),
               ),
-              textWithLeftIcon("assets/images/ic_near_me.svg",
-                  "Cách tôi ${data.distance} km"),
+            ],
+          ),
+        ),
+        RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: "Qua đêm: ",
+                style: TextStyle(
+                    color: Color(0xff8F9BB3),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18),
+              ),
+              TextSpan(
+                text: "${hotelData.priceOn} đ",
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18,
+                  color: Color(0xff36353E),
+                ),
+              ),
             ],
           ),
         ),

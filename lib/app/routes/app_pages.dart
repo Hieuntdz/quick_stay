@@ -8,12 +8,6 @@ import 'package:quick_stay_flutter/app/modules/main_view/bindings/main_view_bind
 import 'package:quick_stay_flutter/app/modules/main_view/views/main_view_view.dart';
 import 'package:quick_stay_flutter/app/modules/map_page/bindings/map_page_binding.dart';
 import 'package:quick_stay_flutter/app/modules/map_page/views/map_page_view.dart';
-import 'package:quick_stay_flutter/app/modules/order_page/bindings/order_page_binding.dart';
-import 'package:quick_stay_flutter/app/modules/order_page/views/order_page_view.dart';
-import 'package:quick_stay_flutter/app/modules/profile_page/bindings/profile_page_binding.dart';
-import 'package:quick_stay_flutter/app/modules/profile_page/views/profile_page_view.dart';
-import 'package:quick_stay_flutter/app/modules/promote_page/bindings/promote_page_binding.dart';
-import 'package:quick_stay_flutter/app/modules/promote_page/views/promote_page_view.dart';
 
 part 'app_routes.dart';
 
@@ -37,24 +31,9 @@ class AppPages {
       binding: MainViewBinding(),
     ),
     GetPage(
-      name: _Paths.ORDER_PAGE,
-      page: () => OrderPageView(),
-      binding: OrderPageBinding(),
-    ),
-    GetPage(
       name: _Paths.MAP_PAGE,
       page: () => MapPageView(),
       binding: MapPageBinding(),
-    ),
-    GetPage(
-      name: _Paths.PROMOTE_PAGE,
-      page: () => PromotePageView(),
-      binding: PromotePageBinding(),
-    ),
-    GetPage(
-      name: _Paths.PROFILE_PAGE,
-      page: () => ProfilePageView(),
-      binding: ProfilePageBinding(),
     ),
   ];
 }

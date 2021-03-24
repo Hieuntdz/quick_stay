@@ -30,7 +30,9 @@ class HomeController extends GetxController {
   }
 
   @override
-  void onClose() {}
+  void onClose() {
+    _timer.cancel();
+  }
 
   Repository _repository = Repository();
 
@@ -51,6 +53,8 @@ class HomeController extends GetxController {
   RxList _listRecommendHotel = <HotelData>[].obs;
 
   List<HotelData> get listRecommendHotel => _listRecommendHotel.value;
+
+  Position position;
 
   /*
     *handle scroll banner
@@ -166,7 +170,7 @@ class HomeController extends GetxController {
       }
     }
 
-    Position position = await Geolocator.getCurrentPosition();
+    position = await Geolocator.getCurrentPosition();
     getListHighLightHotel(position);
     getListRecommendHotel(position);
     Logger.debug("_determinePosition $position");
