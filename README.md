@@ -2,18 +2,8 @@
 
 This project use GetX for state management 
 
-## Getting Started
+## To generate locales
+get generate locales assets/locales
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-To generate locales
-#get generate locales assets/locales
+##Demo
+<img src="https://user-images.githubusercontent.com/54795206/112612775-e4612900-8e51-11eb-889a-bd9243e3429c.jpg" width="13%"></img> <img src="https://user-images.githubusercontent.com/54795206/112612869-0490e800-8e52-11eb-8667-6ceca86fb620.jpg" width="13%"></img> <img src="https://user-images.githubusercontent.com/54795206/112612878-078bd880-8e52-11eb-8be9-6411cb528430.jpg" width="13%"></img> <img src="https://user-images.githubusercontent.com/54795206/112612882-09559c00-8e52-11eb-880a-837752882f7a.jpg" width="13%"></img> 
