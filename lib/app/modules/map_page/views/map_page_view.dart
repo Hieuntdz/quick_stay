@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:quick_stay_flutter/app/modules/home/controllers/home_controller.dart';
 import 'package:quick_stay_flutter/app/modules/map_page/views/map_maker_painter.dart';
+import 'package:quick_stay_flutter/app/routes/app_pages.dart';
 import 'package:quick_stay_flutter/app/utils/const.dart';
 import 'package:quick_stay_flutter/app/utils/logger.dart';
 
@@ -47,11 +48,11 @@ class MapPageView extends GetView<MapPageController> {
 
     return Stack(
       children: [
-        _bounderry(),
+        // _bounderry(),
         Obx(
           () {
             return GoogleMap(
-              markers: Set<Marker>.of(controller.listMarker.value.toSet()),
+              markers: Set<Marker>.of(controller.listMarker.value.values.toSet()),
               mapType: MapType.normal,
               initialCameraPosition: controller.cameraPosition,
               onMapCreated: (GoogleMapController mapController) {
@@ -68,7 +69,9 @@ class MapPageView extends GetView<MapPageController> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              SvgPicture.asset("assets/images/ic_back.svg"),
+              InkWell(child: SvgPicture.asset("assets/images/ic_back.svg"),onTap: (){
+                Get.back();
+              },),
               Text(
                 "Các khách sạn được đề xuất",
                 style: TextStyle(
